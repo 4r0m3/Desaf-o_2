@@ -1,0 +1,176 @@
+red nacional:
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class RedNacional {
+private:
+    string* estaciones; // Arreglo dinámico para almacenar estaciones
+    string* precios_combustible; // Arreglo dinámico para precios de combustible
+    int num_estaciones; // Número actual de estaciones
+    int capacidad; // Capacidad del arreglo
+
+    // Función para redimensionar el arreglo cuando se alcanza la capacidad
+    void redimensionar() {
+        capacidad *= 2;
+        string* nuevas_estaciones = new string[capacidad];
+        string* nuevos_precios = new string[capacidad];
+        for (int i = 0; i < num_estaciones; ++i) {
+            nuevas_estaciones[i] = estaciones[i];
+            nuevos_precios[i] = precios_combustible[i];
+        }
+        delete[] estaciones;
+        delete[] precios_combustible;
+        estaciones = nuevas_estaciones;
+        precios_combustible = nuevos_precios;
+    }
+
+public:
+    // Constructor para inicializar los atributos
+    RedNacional() : num_estaciones(0), capacidad(10) {
+        estaciones = new string[capacidad];
+        precios_combustible = new string[capacidad];
+    }
+
+    // Destructor para liberar la memoria dinámica
+    ~RedNacional() {
+        delete[] estaciones;
+        delete[] precios_combustible;
+    }
+
+    // Método para agregar una nueva estación
+    void agregarEstacion(const string& estacion) {
+        if (num_estaciones == capacidad) {
+            redimensionar();
+        }
+        estaciones[num_estaciones++] = estacion;
+    }
+
+    // Método para eliminar una estación (implementación pendiente)
+    void eliminarEstacion(const string& codigo) {
+        // Implementación para eliminar una estación
+    }
+
+    // Método para calcular las ventas totales (implementación pendiente)
+    double calcularVentasTotales() {
+        // Implementación para calcular ventas totales
+        return 0.0;
+    }
+
+    // Método para fijar precios del combustible (implementación pendiente)
+    void fijarPreciosCombustible(const string& region, const string& precios) {
+        // Implementación para fijar precios del combustible
+    }
+
+    // Método para buscar una estación (implementación pendiente)
+    string buscarEstacion(const string& codigo) {
+        // Implementación para buscar una estación
+        return "";
+    }
+
+    // Método para mostrar información de la red
+    void mostrarInformacion() const {
+        cout << "Información de la Red Nacional" << endl;
+    }
+};
+ estación de servicio:
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class EstacionServicio {
+private:
+    string gerente; // Gerente de la estación
+    string region; // Región de la estación
+    string ubicacion; // Ubicación de la estación
+    string* capacidad_tanque; // Arreglo dinámico para capacidad del tanque
+    string* surtidores; // Arreglo dinámico para surtidores
+    int num_surtidores; // Número actual de surtidores
+    int capacidad; // Capacidad del arreglo
+
+    // Función para redimensionar el arreglo cuando se alcanza la capacidad
+    void redimensionar() {
+        capacidad *= 2;
+        string* nuevos_surtidores = new string[capacidad];
+        for (int i = 0; i < num_surtidores; ++i) {
+            nuevos_surtidores[i] = surtidores[i];
+        }
+        delete[] surtidores;
+        surtidores = nuevos_surtidores;
+    }
+
+public:
+    // Constructor para inicializar los atributos
+    EstacionServicio() : num_surtidores(0), capacidad(10) {
+        capacidad_tanque = new string[capacidad];
+        surtidores = new string[capacidad];
+    }
+
+    // Destructor para liberar la memoria dinámica
+    ~EstacionServicio() {
+        delete[] capacidad_tanque;
+        delete[] surtidores;
+    }
+
+    // Método para agregar un nuevo surtidor
+    void agregarSurtidor(const string& surtidor) {
+        if (num_surtidores == capacidad) {
+            redimensionar();
+        }
+        surtidores[num_surtidores++] = surtidor;
+    }
+
+    // Método para eliminar un surtidor (implementación pendiente)
+    void eliminarSurtidor(const string& codigo) {
+        // Implementación para eliminar un surtidor
+    }
+
+    // Método para activar un surtidor (implementación pendiente)
+    void activarSurtidor(const string& codigo) {
+        // Implementación para activar un surtidor
+    }
+
+    // Método para desactivar un surtidor (implementación pendiente)
+    void desactivarSurtidor(const string& codigo) {
+        // Implementación para desactivar un surtidor
+    }
+
+    // Método para buscar un surtidor (implementación pendiente)
+    string buscarSurtidor(const string& codigo) {
+        // Implementación para buscar un surtidor
+        return "";
+    }
+
+    // Método para calcular las ventas (implementación pendiente)
+    double calcularVentas() {
+        // Implementación para calcular ventas
+        return 0.0;
+    }
+
+    // Método para asignar capacidad al tanque (implementación pendiente)
+    void asignarCapacidadTanque() {
+        // Implementación para asignar capacidad al tanque
+    }
+
+    // Método para mostrar información de la estación
+    void mostrarInformacion() const {
+        cout << "Información de la Estación de Servicio" << endl;
+    }
+};
+main:
+int main() {
+    RedNacional red;
+    EstacionServicio estacion;
+
+    // Agregar una estación y un surtidor
+    red.agregarEstacion("Estación 1");
+    estacion.agregarSurtidor("Surtidor 1");
+
+    // Mostrar información
+    red.mostrarInformacion();
+    estacion.mostrarInformacion();
+
+    return 0;
+}
